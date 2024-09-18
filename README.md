@@ -22,8 +22,97 @@ STEP 7: Use cross tabulation method to quantitatively analyze the relationship b
 
 STEP 8: Use heatmap method of representation to show relationships between two variables, one plotted on each axis.
 
-## CODING AND OUTPUT
-        <<INCLUDE YOUR CODING AND OUTPUT SCREENSHOTS>>
+## CODING AND OUTPUT:
+```python
+import pandas as pd
+df=pd.read_csv("/content/titanic_dataset.csv")
+df
+```
+![alt text](<Screenshot 2024-09-18 104241.png>)
 
-# RESULT
-        <<INCLUDE YOUR RESULT HERE>>
+```python
+df.isnull().sum()
+```
+![alt text](<Screenshot 2024-09-18 104249.png>)
+
+```python
+df.dropna(inplace=True)
+df
+```
+![alt text](<Screenshot 2024-09-18 104310.png>)
+
+```python
+df.isnull().sum()
+```
+![alt text](<Screenshot 2024-09-18 104325.png>)
+
+```python
+df.info()
+```
+![alt text](<Screenshot 2024-09-18 104334.png>)
+
+```python
+df.shape
+```
+![alt text](<Screenshot 2024-09-18 104340.png>)
+
+```python
+df.set_index("PassengerId",inplace=True)
+df.describe()
+```
+![alt text](image.png)
+
+```python
+df
+```
+![alt text](<Screenshot 2024-09-18 104400.png>)
+
+```python
+df.nunique()
+```
+![alt text](<Screenshot 2024-09-18 104407.png>)
+
+```python
+df["Survived"].value_counts()
+```
+![alt text](<Screenshot 2024-09-18 105105.png>)
+
+```python
+percentage=(df["Survived"].value_counts()/df.shape[0]*100).round(2)
+percentage
+```
+![alt text](<Screenshot 2024-09-18 104413.png>)
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
+
+```python
+sns.countplot(data=df,x="Survived")
+```
+![alt text](<Screenshot 2024-09-18 104421.png>)
+
+```python
+df.Pclass.unique()
+```
+![alt text](<Screenshot 2024-09-18 104427.png>)
+
+```python
+sns.catplot(x="Sex",col="Survived",kind="count",data=df,height=5,aspect=.7)
+```
+![alt text](<Screenshot 2024-09-18 104434.png>)
+
+```python
+sns.catplot(x='Survived',hue="Sex",data=df,kind="count")
+```
+![alt text](<Screenshot 2024-09-18 104445.png>)
+
+```python
+sns.catplot(data=df,col="Survived",x="Sex",hue="Pclass",kind="count")
+```
+![alt text](<Screenshot 2024-09-18 104502.png>)
+
+# RESULT:
+        The Exploratory Data Analysis on the given data set has been performed.
